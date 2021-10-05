@@ -161,6 +161,7 @@ $blue-clr: #003466;
       display: flex;
       justify-content: space-between;
       width: 100%;
+      z-index: 3;
       .donebtn {
         width: 47%;
         border: 2px $blue-clr solid;

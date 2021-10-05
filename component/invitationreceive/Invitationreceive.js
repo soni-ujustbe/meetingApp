@@ -252,18 +252,18 @@ function Invetationreceive(props) {
                       </div>
                   } */}
 
-                  <Link href={"/invitationdetails?name=" + item.meetingId}>
+                  {/* <Link href={"/invitationdetails?name=" + item.meetingId}>
                     <a className={styles.Cardlink} onClick={() => props.meetingId(item.meetingId)} >link</a>
-                  </Link>
+                  </Link> */}
 
                   {item.toUsersList.map((frmlist) => (
 
                     <>
                       {props.data.userid.indexOf(frmlist.userId) !==
                         -1 && frmlist.status === "null" ?
-                        <Link href={"/invitationdetails?name=" + item.meetingId}>
-                          <a className={styles.Cardlink} onClick={() => props.meetingId(item.meetingId)} >link</a>
-                        </Link> : null
+                        null : <Link href={"/invitationdetails?name=" + item.meetingId}>
+                        <a className={styles.Cardlink} onClick={() => props.meetingId(item.meetingId)} >link</a>
+                      </Link>
                       }
                     </>
                   )
