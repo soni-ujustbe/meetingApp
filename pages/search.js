@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter, withRouter } from "next/router";
-import InvitationboxController from "../component/invitationbox/Invitationbox.controller";
 import Header from "../component/layout/header/Header";
-import ListingController from "../component/listing/Listing.controller";
-import MentorController from "../component/mentor/Mentor.controller";
-import Mentorboxcontroller  from "../component/mentorbox/Mentorbox.controller";
 import Link from "next/link";
 import SearchController from "../component/search/Search.controller";
+//import  Searchboxcontroller  from "../component/searchbox/Searchbox.controller";
+import SearchboxController from "../component/searchbox/Searchbox.controller";
 
 export default function partner() {
   const router = useRouter();
@@ -47,8 +45,8 @@ export default function partner() {
         </ul>
       </section>
       {/* <ListingController /> */}
-      <SearchController /> <InvitationboxController/>
-
+      <SearchController /> 
+      <SearchboxController/>
       <Header />
     </>:null}
     </>

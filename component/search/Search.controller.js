@@ -14,21 +14,22 @@ import {
   searchtext,
   searchData,
 } from "./Search.action";
-import {
-  addToInvitationBox,
-  groupinvitation,
-  makeid,
-  openBox,
-  removedMeetingData,
-  removePartner,
-  sendMeetingData,
-  singleinvitation,
-} from "../invitationbox/Invitationbox.action";
+// import {
+//   addToInvitationBox,
+//   groupinvitation,
+//   makeid,
+//   openBox,
+//   removedMeetingData,
+//   removePartner,
+//   sendMeetingData,
+//   singleinvitation,
+// } from "../invitationbox/Invitationbox.action";
 import {
   addtoSelectlp,
   removefromSelectlp,
   removeSelectlpAll,
 } from "../selectinvite/Selectinvitee.action";
+import { addToSearchBox, makesearchid, openSearchBox, removeConnectsearchBox, searchboxgroupinvitation, sendSearchMeetingData } from "../searchbox/Searchbox.action";
 
 export class SearchController extends Component {
   constructor(props) {
@@ -91,9 +92,9 @@ const mapDispatchToProps = (dispatch) => ({
   //   dispatch(loginUser());
   // },
   onaddToInvitationBox: (partner) => {
-    dispatch(addToInvitationBox(partner)),
-      dispatch(openBox()),
-      dispatch(makeid());
+    dispatch(addToSearchBox(partner)),
+      dispatch(openSearchBox()),
+      dispatch(makesearchid());
     //dispatch(selectGroupInvitation());
   },
   onGroupinvitation: (data) => {
@@ -101,11 +102,11 @@ const mapDispatchToProps = (dispatch) => ({
   },
   singleinvitation: () => {
     dispatch(singleinvitation());
-    dispatch(removeSelectlpAll());
+    //dispatch(removeSelectlpAll());
   },
   // singleinvitation: () => dispatch(singleinvitation()),
   onSelectLP: (partner) => {
-    dispatch(addToInvitationBox(partner));
+    dispatch(addToSearchBox(partner));
     dispatch(addtoSelectlp(partner));
   },
   
@@ -117,18 +118,18 @@ const mapDispatchToProps = (dispatch) => ({
   searchtext:(searchtext)=> dispatch(searchtext(searchtext)),
   removeselectLp: (selectId) => dispatch(removefromSelectlp(selectId)),
   selectLP: (selectId) => dispatch(selectPartners(selectId)),
-  sendmeeting: (selectId) => dispatch(sendMeetingData(selectId)),
-  removemeeting: (selectId) => dispatch(removedMeetingData(selectId)),
+  sendmeeting: (selectId) => dispatch(sendSearchMeetingData(selectId)),
+  removemeeting: (selectId) => dispatch(removedSearchMeetingData(selectId)),
   // unselectLP: (selectId) => dispatch(unselectPartner(selectId)),
   unselectLPall: () => dispatch(unselectallPartner()),
   onGroupInvitationBox: () => {
-    dispatch(openBox());
-    dispatch(groupinvitation());
-    dispatch(makeid());
+    dispatch(openSearchBox());
+    dispatch(searchboxgroupinvitation());
+    dispatch(makesearchid());
   },
   unselectLP: (selectId) => {
     dispatch(unselectPartner(selectId));
-    dispatch(removePartner(selectId));
+    dispatch(removeConnectsearchBox(selectId));
   },
 });
 

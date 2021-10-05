@@ -136,7 +136,7 @@ function Meetingdetails(props) {
               {test.mom.length > 0 || test.mom===null ?
                 <ul>{test.mom.map((rest) => <li className={
                   createdBy  === test.created.created_By ? "active" : null
-                }>{rest.mom}  <abbr>{test.created.fullName} {test.created.created_On.split(/[T,.]/, 2).map((time) => <span>{time}</span>)}</abbr></li>)}</ul> : null}
+                }>{rest.mom}  <abbr>{rest.created.fullName} {rest.created.created_On.split(/[T,.]/, 2).map((time) => <span>{time}</span>)}</abbr></li>)}</ul> : null}
               <textarea
                 value={mom}
                 onChange={onChangeMom}
