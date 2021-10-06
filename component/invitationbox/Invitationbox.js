@@ -214,7 +214,7 @@ function Invitationbox(props) {
                         {dateTime.toLocaleDateString()} | 
                         {dateTime.toLocaleTimeString()}
                       </h5>
-                      <div className={styles.actionRow}>
+                      <div className= {`${styles.actionRow} ${styles.centeralign}`}>
                         <button
                           //onClick={() => handlemeeting()}
                           onClick={() => { props.removedall(); hidesuccess();}}

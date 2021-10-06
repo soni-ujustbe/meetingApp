@@ -49,7 +49,18 @@ function Dashboard(props) {
       .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata, {
         headers: headers,
       })
-      .then((response) => console.log(response));
+      .then((response) => console.log(response))
+      .then(
+        (res) => {
+          console.log(res.data.message[0].type)
+          if (res.data.message[0].type === "SUCCESS") {
+            console.log("true");
+            setopenpop(true)
+            setmeetinguser(fromuser);
+            props.fetchinvite();
+          }
+        }
+      )
     //.then(response => setArticleId(response.data.id));
   }
 
@@ -87,6 +98,8 @@ function Dashboard(props) {
   return (
     console.log("dashboard data", props.data),
 
+    
+
     <>
       <div className="dashboarTop">
         <div className="left">
@@ -95,62 +108,10 @@ function Dashboard(props) {
           </div>
           <h1>{props.data.userdata.firstName} {props.data.userdata.lastName}</h1>
         </div>
-        <div className="right">
+        {/* <div className="right">
           <img src="/images/notification.png" />
-        </div>
+        </div> */}
       </div>
-
-      <>
-
-        <div className={styles.CardWrapper}>
-          <h2>Invitation Sent</h2>
-          <ul>
-            {props.data.sentdata.length > 0 ? (
-              props.data.sentdata.slice(0, 2).map((item, i) => (
-                //console.log(item),
-                <li className={`${styles.listingCard} ${styles.columnflex}`}>
-                  <h3>Agenda : {item.agenda}</h3>
-                  <h6  >Meeting Code : {item.meetingCode}</h6>
-                  <h4>{item.created.created_On.split(/[T,.]/, 2).map((time) => <span>{time}</span>)}</h4>
-                  {item.toUsersList.map((frmlist) => (
-                    <div className={frmlist.status === "Accept" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}` }>
-                    <h5>{frmlist.toUserName}  </h5>
-                    <div className={styles.statusRow}>
-                      <h6>Status : </h6> <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
-                    </div>
-                    {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
-                    {frmlist.status == "Rejected" ? <p>
-                    {frmlist.rejectReason}
-                    </p> : null}
-
-                  </div>
-                  ))}
-
-                  {/* <div className={styles.actionRow}>
-                    <button className={styles.donebtn}>Accept</button>
-                    <button className={styles.canclebtn}>Reject</button>
-                  </div> */}
-                  <Link href={"/invitationdetails?name=" + item.meetingId}>
-                    <a className={styles.Cardlink} onClick={() => props.meetingId(item.meetingId)} >link</a>
-                  </Link>
-                </li>
-              ))
-            ) : (
-              <>
-                {
-                  props.data.loading ? <p>Loading...</p> : <p>No meeting yet sent</p>
-                }
-              </>
-            )}
-          </ul>
-          {props.data.sentdata.length > 0 ?
-            <Link href="#">
-              <a className="donebtn dashboardbtn">See More</a>
-            </Link> : null}
-        </div>
-
-      </>
-
       <>
 
         <div className={styles.CardWrapper}>
@@ -172,15 +133,16 @@ function Dashboard(props) {
                     <>
                       {props.data.userdata.userId.indexOf(frmlist.userId) !== -1 && frmlist.status !== "null" ?
                         // <div className={styles.statusBox}>
-                        <div className={frmlist.status === "Accept" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}`}>
+                        <div className={frmlist.status === "Accepted" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}`}>
                           <h5>You have  </h5>
                           <div className={styles.statusRow}>
-                            <h6>Status : </h6> <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
+                            <h6>Status : </h6> {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
                           </div>
-                          {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
+                    
                           {frmlist.status == "Rejected" ? <p>
                             {frmlist.rejectReason}
                           </p> : null}
+                          <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
 
                         </div> : null
                       }
@@ -200,12 +162,13 @@ function Dashboard(props) {
                         }>
                           <h5>{frmlist.toUserName}</h5>
                           <div className={styles.statusRow}>
-                            <h6>Status : </h6> <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
+                            <h6>Status : </h6> {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
                           </div>
-                          {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
+                          
                           {frmlist.status === "Rejected" ? <p>
                             {frmlist.rejectReason}
                           </p> : null}
+                          <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
                         </div>
                       }
                     </>
@@ -248,7 +211,7 @@ function Dashboard(props) {
             )}
           </ul>
           {props.data.receivedata.length > 0 ?
-            <Link href="#">
+            <Link href="/invitations">
               <a className="donebtn dashboardbtn">See More</a>
             </Link> : null}
 
@@ -303,6 +266,59 @@ function Dashboard(props) {
           </div> : null
         }
       </>
+
+      <>
+
+        <div className={styles.CardWrapper}>
+          <h2>Invitation Sent</h2>
+          <ul>
+            {props.data.sentdata.length > 0 ? (
+              props.data.sentdata.slice(0, 2).map((item, i) => (
+                //console.log(item),
+                <li className={`${styles.listingCard} ${styles.columnflex}`}>
+                  <h3>Agenda : {item.agenda}</h3>
+                  <h6  >Meeting Code : {item.meetingCode}</h6>
+                  <h4>{item.created.created_On.split(/[T,.]/, 2).map((time) => <span>{time}</span>)}</h4>
+                  {item.toUsersList.map((frmlist) => (
+                    <div className={frmlist.status === "Accept" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}` }>
+                    <h5>{frmlist.toUserName}  </h5>
+                    <div className={styles.statusRow}>
+                      <h6>Status : </h6> <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
+                    </div>
+                    {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
+                    {frmlist.status == "Rejected" ? <p>
+                    {frmlist.rejectReason}
+                    </p> : null}
+
+                  </div>
+                  ))}
+
+                  {/* <div className={styles.actionRow}>
+                    <button className={styles.donebtn}>Accept</button>
+                    <button className={styles.canclebtn}>Reject</button>
+                  </div> */}
+                  <Link href={"/invitationdetails?name=" + item.meetingId}>
+                    <a className={styles.Cardlink} onClick={() => props.meetingId(item.meetingId)} >link</a>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <>
+                {
+                  props.data.loading ? <p>Loading...</p> : <p>No meeting yet sent</p>
+                }
+              </>
+            )}
+          </ul>
+          {props.data.sentdata.length > 0 ?
+            <Link href="/invitations">
+              <a className="donebtn dashboardbtn">See More</a>
+            </Link> : null}
+        </div>
+
+      </>
+
+      
       {/* <InvetationsentController /> */}
       <Header />
     </>

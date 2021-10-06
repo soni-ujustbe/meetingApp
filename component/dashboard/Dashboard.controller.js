@@ -15,7 +15,7 @@ export class Dashboardcontroller extends Component {
 
   render() {
     //console.log("dashboard props", this.props);
-    return <Dashboard data={this.props.data} meetingId={this.props.meetingId}/>;
+    return <Dashboard data={this.props.data} fetchinvite={this.props.sendMsg} meetingId={this.props.meetingId}/>;
   }
 }
 

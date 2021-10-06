@@ -45,7 +45,7 @@ function Invetationreceive(props) {
     const meetingdata = {
       meetingId: meetId,
       userId: MessageList.data._id,
-      status: "Accept",
+      status: "Accepted",
       updatedBy: MessageList.data._id,
     };
     console.log("meeting data", meetingdata);
@@ -189,9 +189,10 @@ function Invetationreceive(props) {
                         <div className={frmlist.status === "Accept" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}`}>
                           <h5>You have  </h5>
                           <div className={styles.statusRow}>
-                            <h6>Status : </h6> <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
+                            <h6>Status : </h6> {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
                           </div>
-                          {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
+                          
+                          <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
                           {frmlist.status == "Rejected" ? <p>
                             {frmlist.rejectReason}
                           </p> : null}
@@ -214,9 +215,10 @@ function Invetationreceive(props) {
                         }>
                           <h5>{frmlist.toUserName}</h5>
                           <div className={styles.statusRow}>
-                            <h6>Status : </h6> <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
+                            <h6>Status : </h6> {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
                           </div>
-                          {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}
+                          
+                          <h4>{frmlist.updatedOn ? frmlist.updatedOn.split(/[T,.]/, 2).map((time) => <span>{time}</span>) : null}</h4>
                           {frmlist.status === "Rejected" ? <p>
                             {frmlist.rejectReason}
                           </p> : null}

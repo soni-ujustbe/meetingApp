@@ -212,19 +212,20 @@ function Header(props) {
       </header>
       <section className={menuopen ? "sidemenu active" : "sidemenu"}>
         <ul>
-          <li>
-            <Link href="/partner">
-              <a>Sent Invitation</a>
-            </Link>
-          </li>
-          <li>
+        <li>
             <Link href="/dashboard">
               <a>Dashboard</a>
             </Link>
           </li>
           <li>
+            <Link href="/partner">
+              <a>Send Invitation</a>
+            </Link>
+          </li>
+          
+          <li>
             <Link href="/invitations">
-              <a>Your History</a>
+              <a>Invitation History</a>
             </Link>
           </li>
           <li onClick={() => logout2()}>

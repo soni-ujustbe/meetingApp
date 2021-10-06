@@ -37,7 +37,7 @@ function invitations() {
       <section className="topNav invitationsBox">
         <ul>
           <li className={sent ? "active" : null} onClick={()=> sents()}>Sent</li>
-          <li className={receive ? "active" : null} onClick={()=> recives()}>Receive</li>
+          <li className={receive ? "active" : null} onClick={()=> recives()}>Received</li>
         </ul>
       </section>
       {sent?<InvetationsentController/>:<InvitationreceiveController/>}

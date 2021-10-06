@@ -1,4 +1,5 @@
 import {
+  FETCH_USERID,
   GET_USER_DATA_FAILURE,
   GET_USER_DATA_REQUEST,
   GET_USER_DATA_SUCCESS,
@@ -48,6 +49,7 @@ export const receiveinvitation = () => {
     dispatch(receivedataRequest());
     var MessageList = JSON.parse(localStorage.getItem("user"));
     console.log("local storage", MessageList.data._id);
+    dispatch(fetchuserid(MessageList.data._id));
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
       fetch("https://api-test.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
@@ -73,6 +75,7 @@ export const sentinvitation = () => {
     dispatch(sentdataRequest());
     var MessageList = JSON.parse(localStorage.getItem("user"));
     console.log("local storage", MessageList.data._id);
+    dispatch(fetchuserid(MessageList.data._id));
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
       fetch("https://api-test.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
@@ -128,4 +131,8 @@ export const sentdataSuccess = (usedata) => ({
 export const sentdataFailure = (error) => ({
   type: SENT_INVITATION_DATA_FAILURE,
   payload: error,
+});
+export const fetchuserid = (userid) => ({
+  type: FETCH_USERID,
+  payload: userid,
 });

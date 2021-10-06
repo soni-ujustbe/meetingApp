@@ -46,6 +46,9 @@ $blue-clr: #003466;
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
+    &.centeralign{
+      justify-content: center;
+    }
     .donebtn {
       width: 47%;
       border: 2px $blue-clr solid;

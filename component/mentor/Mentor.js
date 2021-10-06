@@ -12,10 +12,17 @@ function Mentor(props) {
     setnoitem([]);
   }
 
+  const handleChange = e => {
+    const target = e.target;
+    if (target.checked) {
+      setGender(target.value);
+    }
+  };
+
   function handleScroll() {
     //setMessage('bottom reached')
     //console.log("scroll");
-    
+
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;
@@ -24,40 +31,40 @@ function Mentor(props) {
     if (windowBottom >= docHeight) {
       setMessage('bottom reached')
 
-        // this.setState({
-        //     message: 'bottom reached'
-        // });
-        
-        console.log(props.data.totalcount);
-        if (props.data.currentcount < props.data.totalcount ) {
+      // this.setState({
+      //     message: 'bottom reached'
+      // });
 
-          props.loadmore(nodata);
-          
-          console.log("true");
-          console.log(nodata);
-          setNodata(nodata+20)
-          props.currentcount(nodata+20);
-        }
-        else{
-          console.log("false");
-          console.log(nodata);
-        }
-        
+      console.log(props.data.totalcount);
+      if (props.data.currentcount < props.data.totalcount) {
+
+        props.loadmore(nodata);
+
+        console.log("true");
+        console.log(nodata);
+        setNodata(nodata + 20)
+        props.currentcount(nodata + 20);
+      }
+      else {
+        console.log("false");
+        console.log(nodata);
+      }
+
 
     } else {
       setMessage('not at bottom')
-        // this.setState({
-        //     message: 'not at bottom'
-        // });
+      // this.setState({
+      //     message: 'not at bottom'
+      // });
     }
-}
+  }
 
-useEffect(() => {
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-});
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
   return (
     console.log("mentor data", props),
@@ -74,6 +81,8 @@ useEffect(() => {
                     id="1"
                     value="false"
                     name="invite"
+                    checked={gender == 'false'}
+                    onChange={handleChange}
                     onClick={(e) => {
                       props.onGroupinvitation(e.target.value);
                       props.singleinvitation();
@@ -88,6 +97,8 @@ useEffect(() => {
                     id="2"
                     value="true"
                     name="invite"
+                    checked={gender == 'true'}
+                    onChange={handleChange}
                     onClick={(e) => props.onGroupinvitation(e.target.value)}
                   />
                   <label for="2">Group Invitaion</label>
@@ -106,11 +117,11 @@ useEffect(() => {
         {
           props.data.partner === null || props.data.partner === "" ? null : <div className={styles.searchBox}>
             {
-              props.data.partner.length > 1?<input
-              type="text"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-            />:null
+              props.data.partner.length > 1 ? <input
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              /> : null
             }
             {/* auto complete */}
             {/* <div className={styles.autocompleteBox}>

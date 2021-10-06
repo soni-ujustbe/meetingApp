@@ -210,6 +210,7 @@ $blue-clr: #003466;
         &:first-child{
           
           margin-right: 10px;
+          
           // margin-left: 10px;
           &:after{content:"|" ; padding-left: 10px;}
         }
@@ -283,7 +284,7 @@ $blue-clr: #003466;
           &:first-child{
             
             margin-right: 10px;
-            margin-left: 10px;
+            margin-left: 0px;
             &:after{content:"|" ; padding-left: 10px;}
           }
         }
@@ -300,7 +301,9 @@ $blue-clr: #003466;
       }
       .statusRow {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-content: center;
+        h2{margin-left: 15px; font-size: 16px;}
       }
     }
 

@@ -1,4 +1,5 @@
 import {
+  FETCH_USERID,
   GET_USER_DATA_FAILURE,
   GET_USER_DATA_REQUEST,
   GET_USER_DATA_SUCCESS,
@@ -15,6 +16,7 @@ const usedataInitial = {
   userdata: [],
   receivedata: [],
   sentdata: [],
+  userid: ""
 };
 
 const dashboardReducer = (state = usedataInitial, action) => {
@@ -37,6 +39,8 @@ const dashboardReducer = (state = usedataInitial, action) => {
       return { ...state, loading: false, receivedata: action.payload };
     case RECEIVE_INVITATION_DATA_FAILURE:
       return { ...state, loading: true, error: action.error };
+    case FETCH_USERID:
+      return { ...state, userid: action.payload };
     default:
       return state;
   }

@@ -18,6 +18,11 @@ function Meetingdetails(props) {
   const router = useRouter()
   console.log("my meeting id details" + props.data);
 
+  let newDates =(xyz)=> {
+    var datesd = new Date(xyz).toLocaleString;
+    console.log(datesd);
+  }
+
   const onChangeMom = (e) => {
     const Agenda = e.target.value;
     if (Agenda.length < 1) {
@@ -136,7 +141,9 @@ function Meetingdetails(props) {
               {test.mom.length > 0 || test.mom===null ?
                 <ul>{test.mom.map((rest) => <li className={
                   createdBy  === test.created.created_By ? "active" : null
-                }>{rest.mom}  <abbr>{rest.created.fullName} {rest.created.created_On.split(/[T,.]/, 2).map((time) => <span>{time}</span>)}</abbr></li>)}</ul> : null}
+                }>{rest.mom}  <abbr>{rest.created.fullName} 
+                {rest.created.created_On.split(/[T,.]/, 2).map((time) => <span>{time}</span>)}</abbr></li>)}</ul> : null}
+                {/* {newDates(rest.created.created_On)}</abbr></li>)}</ul> : null} */}
               <textarea
                 value={mom}
                 onChange={onChangeMom}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
+  currentCountsConnect,
   fetchMentor,
   mentorGroupInvitation,
   selectConnect,
@@ -23,6 +24,7 @@ import {
 import Mentor from "./Mentor";
 import { addToMentorBox, makementorid, mentorboxgroupinvitation, mentorboxsingleinvitation, openMentorBox, removeConnectmentorBox, removedMentorMeetingData, sendMentorMeetingData } from "../mentorbox/Mentorbox.action";
 import { addtomentorSelectlp, removementorfromSelectlp, removementorSelectlpAll } from "../selectmentorinvite/Selectmentorinvitee.action";
+import { searchData } from "../search/Search.action";
 
 export class MentorController extends Component {
   constructor(props) {
@@ -34,8 +36,13 @@ export class MentorController extends Component {
   }
 
   componentDidMount() {
-    this.props.sendMsg();
-    this.setState({ currentParnerData: this.props.partnerdata });
+    if (this.props.partnerdata.currentcount === 20) {
+      this.props.sendMsg(0);
+    }
+    
+    //this.props.sendMsg2();
+    console.log("component did mount",this.props.partnerdata.currentcount);
+    //this.setState({ currentParnerData: this.props.partnerdata });
   }
 
   render() {
@@ -55,6 +62,9 @@ export class MentorController extends Component {
           unselectLPall={this.props.unselectLPall}
           sendmeeting={this.props.sendmeeting}
           removemeeting={this.props.removemeeting}
+          loadmore={this.props.sendMsg}
+          searchresult={this.props.sendMsg2}
+          currentcount={this.props.currentcount}
         />
         {/* <p>test</p> */}
       </>
@@ -70,6 +80,11 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   sendMsg: () => {
     dispatch(fetchMentor());
+  },
+  sendMsg2: (seachtext) => {
+    //dispatch(fetchPrtner());
+    dispatch(searchData(seachtext));
+    // dispatch(buzData2());
   },
   onaddToInvitationBox: (partner) => {
     dispatch(addToMentorBox(partner)),
@@ -91,6 +106,7 @@ const mapDispatchToProps = (dispatch) => ({
   //   dispatch(addToMentorBox(partner));
   //   dispatch(addtoSelectlp(partner));
   // },
+  currentcount:(counts)=> dispatch(currentCountsConnect(counts)),
   removeselectLp: (selectId) => dispatch(removementorfromSelectlp(selectId)),
   selectLP: (selectId) => dispatch(selectConnect(selectId)),
   sendmeeting: (selectId) => dispatch(sendMentorMeetingData(selectId)),

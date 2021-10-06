@@ -10,6 +10,7 @@ import meetingdetailsReducer from "./component/meetingdetails/Meetingdetails.red
 import mentorReducer from "./component/mentor/Mentor.reducer";
 import mentorboxReducer from "./component/mentorbox/Mentorbox.reducer";
 import searchReducer from "./component/search/Search.reducer";
+import searchboxReducer from "./component/searchbox/Searchbox.reducer";
 import selctedinviteeReducer from "./component/selectinvite/Selectinvitee.reducer";
 import selctedmentorinviteeReducer from "./component/selectmentorinvite/Selectmentorinvitee.reducer";
 
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   invitationreceive:invitationreceiveReducer,
   userdata:dashboardReducer,
   meetingdetail:meetingdetailsReducer,
-  searchResult:searchReducer
+  searchResult:searchReducer,
+  searchbox:searchboxReducer
 });
 
 export default rootReducer;

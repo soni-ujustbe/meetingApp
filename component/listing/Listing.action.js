@@ -41,9 +41,9 @@ import { useSelector } from "react-redux";
 
 
 
-export const buzData = (count, ccount, textsearch ) => {
+export const buzData = (count, ccount ) => {
   //const curentcount = useSelector(state => state.listing.currentcount);
-  console.log("current counts" + count, "search"+textsearch, "cccount"+ccount);
+  console.log("current counts" + count, "cccount"+ccount);
   return async function (dispatch) {
     dispatch(buzdataRequest());
     var MessageList = JSON.parse(localStorage.getItem("user"));
