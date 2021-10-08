@@ -61,7 +61,7 @@ export const receiveinvitation = () => {
         )
 
         .then((json) => {
-          console.log("meeting", json);
+          console.log("meeting received", json);
           dispatch(receivedataSuccess(json.data.invitedToList));
           return json;
         })

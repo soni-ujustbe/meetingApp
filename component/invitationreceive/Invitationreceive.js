@@ -75,20 +75,7 @@ function Invetationreceive(props) {
   }
 
 
-  const onChangeReason = (e) => {
-    const Reason = e.target.value;
-    //setReason(Reason);
-    setcharcount(150 - Reason.length)
-    if (Reason.length < 1) {
-      //setErruser(true);
-      setDisablebtn(false);
-    } else {
-      //setErruser(false);
-      //setFocususer(true);
-      setDisablebtn(true);
-    }
-    setReason(Reason);
-  };
+  0  
   function rejectmeetingapi() {
     var MessageList = JSON.parse(localStorage.getItem("user"));
     console.log("local storage", MessageList.data._id);

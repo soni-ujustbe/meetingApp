@@ -7,6 +7,12 @@ function Mentor(props) {
   const [value, setValue] = useState("");
   const [noitem, setnoitem] = useState([]);
   const divRef = useRef(null);
+  // const divRef = useRef(null);
+  const [nodata, setNodata] = useState(20);
+  const [message, setMessage] = useState("not at bottom");
+  const [height, setheight] = useState(window.innerHeight);
+  const [gender, setGender] = useState("false");
+  //const router = useRouter()
 
   function emptystate() {
     setnoitem([]);
@@ -67,14 +73,14 @@ function Mentor(props) {
   });
 
   return (
-    console.log("mentor data", props),
+    console.log("mentor data", props.data),
     //console.log(noitem),
     (
       <>
         {
           props.data.partner === null || props.data.partner === "" ? null : <>
             {
-              props.data.partner > 1 ? <ul className={styles.invitationType}>
+              props.data.partner.length > 1 ? <ul className={styles.invitationType}>
                 <li>
                   <input
                     type="radio"

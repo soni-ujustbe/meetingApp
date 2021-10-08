@@ -10,8 +10,11 @@ function Dashboard(props) {
   const [meetinguser, setmeetinguser] = useState("")
   const [acceptmeeting, setaccept] = useState(false)
   const [rejectmeeting, setreject] = useState(false)
+  const [rejectdone, setrejectdone] = useState(false);
+  const [disablebtn, setDisablebtn] = useState(false);
   const [Reason, setReason] = useState(null);
-  console.log("receive meeting invitation", props);
+  const [charcount, setcharcount] = useState("150")
+  console.log("receive meeting invitation", props.data.userid);
 
   function openPopup(fromuser) {
     setopenpop(true)
@@ -28,6 +31,21 @@ function Dashboard(props) {
     setopenpop(false)
     setmeetinguser("")
   }
+
+  const onChangeReason = (e) => {
+    const Reason = e.target.value;
+    //setReason(Reason);
+    setcharcount(150 - Reason.length)
+    if (Reason.length < 1) {
+      //setErruser(true);
+      setDisablebtn(false);
+    } else {
+      //setErruser(false);
+      //setFocususer(true);
+      setDisablebtn(true);
+    }
+    setReason(Reason);
+  };
 
   function handlemeeting(meetId) {
     var MessageList = JSON.parse(localStorage.getItem("user"));
@@ -131,7 +149,7 @@ function Dashboard(props) {
 
                   {item.toUsersList.map((frmlist) => (
                     <>
-                      {props.data.userdata.userId.indexOf(frmlist.userId) !== -1 && frmlist.status !== "null" ?
+                      {props.data.userid.indexOf(frmlist.userId) !== -1 && frmlist.status !== "null" ?
                         // <div className={styles.statusBox}>
                         <div className={frmlist.status === "Accepted" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}`}>
                           <h5>You have  </h5>
@@ -156,7 +174,7 @@ function Dashboard(props) {
                       {
                         // <div className={styles.statusBox}>
                         <div className={
-                          props.data.userdata.userId.indexOf(frmlist.userId) !== -1
+                          props.data.userid.indexOf(frmlist.userId) !== -1
                             ? `${styles.statusBox} ${styles.selected}`
                             : styles.statusBox && frmlist.status !== "null" ? `${styles.statusBox} ${styles.hidecard}` : styles.statusBox
                         }>
@@ -179,7 +197,7 @@ function Dashboard(props) {
                   {item.toUsersList.map((frmlist) => (
 
                     <>
-                      {props.data.userdata.userId.indexOf(frmlist.userId) !==
+                      {props.data.userid.indexOf(frmlist.userId) !==
                         -1 && frmlist.status === "null" ?
                         <div className={styles.actionRow}>
                           <button className={styles.donebtn} onClick={() => handlemeeting(item.meetingId, item.fromUserName)}>Accept</button>
@@ -193,9 +211,9 @@ function Dashboard(props) {
                   )
 
                   }
-                  {/* <Link  href= {"/invitationdetails?name="+item.meetingId}>
+                  <Link  href= {"/invitationdetails?name="+item.meetingId}>
                     <a className={styles.Cardlink} onClick={()=>props.meetingId(item.meetingId)} >link</a>
-                  </Link> */}
+                  </Link>
                 </li>
               ))
             ) : (
@@ -216,55 +234,55 @@ function Dashboard(props) {
             </Link> : null}
 
         </div>
-
         {
-          openpop ? <div className="popupMain">
-            <div className="bg" onClick={() => closePopup()}></div>
+        openpop ? <div className="popupMain">
+          <div className="bg" onClick={() => closePopup()}></div>
 
-            {
-              acceptmeeting ? <div className="popupBox">
-                <div className="success-icon">
-                  <img src="/images/done.png" />
-                </div>
-                <h2>Thank You Accepted</h2>
-                {
-                  <p>Invitation from {meetinguser}</p>
-                }
-              </div> : null
-            }
+          {
+            acceptmeeting ? <div className="popupBox">
+              <div className="success-icon">
+                <img src="/images/done.png" />
+              </div>
+              <h2>Thank You Accepted</h2>
+              {
+                <p>Invitation from {meetinguser}</p>
+              }
+            </div> : null
+          }
 
-            {
-              rejectmeeting ? <div className="popupBox">
-                <div className="reject-icon">
-                  <img src="/images/close.png" />
-                </div>
-                {
-                  rejectdone ? <h2>You have rejected the meeting </h2> : <h2>Resons for rejection </h2>
-                }
+          {
+            rejectmeeting ? <div className="popupBox">
+              <div className="reject-icon">
+                <img src="/images/close.png" />
+              </div>
+              {
+                rejectdone ? <h2>You have rejected the meeting </h2> : <h2>Resons for rejection </h2>
+              }
 
 
 
-                {
-                  rejectdone ? null : <>
-                    <textarea value={Reason}
-                      onChange={onChangeReason}
-                      name="Reason"
-                      autocomplete="false" placeholder="Enter reson">
-                    </textarea>
-                    <abbr>{charcount} Characters</abbr>
-                  </>
-                }
-                {
-                  rejectdone ? <p>You have reject the meeting invitation from {meetinguser}</p> : null
-                }
-                {
-                  rejectdone ? null : <button className="donebtn" disabled={!disablebtn} onClick={() => rejectmeetingapi()}>Submit</button>
-                }
+              {
+                rejectdone ? null : <>
+                  <textarea value={Reason}
+                    onChange={onChangeReason}
+                    name="Reason"
+                    autocomplete="false" placeholder="Enter reson">
+                  </textarea>
+                  <abbr>{charcount} Characters</abbr>
+                </>
+              }
+              {
+                rejectdone ? <p>You have reject the meeting invitation from {meetinguser}</p> : null
+              }
+              {
+                rejectdone ? null : <button className="donebtn" disabled={!disablebtn} onClick={() => rejectmeetingapi()}>Submit</button>
+              }
 
-              </div> : null
-            }
-          </div> : null
-        }
+            </div> : null
+          }
+        </div> : null
+      }
+     
       </>
 
       <>

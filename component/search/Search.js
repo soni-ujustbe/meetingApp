@@ -79,12 +79,12 @@ function Search(props) {
   //   window.addEventListener("scroll", handleScroll);
   // }, [height]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // });
 
   return (
     console.log("inner data", props.data),

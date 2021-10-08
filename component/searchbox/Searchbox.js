@@ -189,7 +189,7 @@ function Searchbox(props) {
                   <div className={styles.sucessList}>
                     {
                       props.data.map((parterdata) =>
-                        <h4>{parterdata.firstName} {parterdata.lastName}</h4>
+                        <h4>{parterdata.businessName}</h4>
                       )
                     }
                   </div>

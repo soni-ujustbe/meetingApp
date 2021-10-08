@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-function Meetingdetails(props) {
+function Meetingdetails(props,  query ) {
   const [page, setPage] = useState("");
   const [commitHistory, setCommitHistory] = useState([]);
   const [mom, setMom] = useState(null);
@@ -16,7 +16,7 @@ function Meetingdetails(props) {
   const [dateTime, setDateTime] = useState(new Date());
   const [disablebtn, setDisablebtn] = useState(false);
   const router = useRouter()
-  console.log("my meeting id details" + props.data);
+  console.log("my meeting id details" + [query]);
 
   let newDates =(xyz)=> {
     var datesd = new Date(xyz).toLocaleString;
@@ -82,6 +82,7 @@ function Meetingdetails(props) {
   }
 
   useEffect(() => {
+    console.log("check param",router.query );
     fetch(`https://api-test.ujustbe.com/Meeting/details?meetingId=${router.query.name}`)
       //fetch("https://api-test.ujustbe.com/Meeting/details")
       //.then(handleErrors)
