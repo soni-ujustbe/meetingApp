@@ -47,27 +47,27 @@ function Dashboard(props) {
     setReason(Reason);
   };
 
-  function handlemeeting(meetId) {
+  function handlemeeting(meetId, fromuser) {
     var MessageList = JSON.parse(localStorage.getItem("user"));
     console.log("local storage", MessageList.data._id);
     console.log("meetid", meetId);
     const meetingdata = {
       meetingId: meetId,
       userId: MessageList.data._id,
-      status: "Accept",
+      status: "Accepted",
       updatedBy: MessageList.data._id,
     };
+    setaccept(true);
     console.log("meeting data", meetingdata);
+    
     //console.log("this userId", article);
     const headers = {
       "Content-Type": "application/json",
       token: "ky23eiqgw5",
     };
     axios
-      .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata, {
-        headers: headers,
-      })
-      .then((response) => console.log(response))
+      .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata)
+      //.then((response) => console.log(response))
       .then(
         (res) => {
           console.log(res.data.message[0].type)
