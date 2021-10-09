@@ -30,6 +30,8 @@ function Dashboard(props) {
   function closePopup(fromuser) {
     setopenpop(false)
     setmeetinguser("")
+    setreject(false)
+    setaccept(true);
   }
 
   const onChangeReason = (e) => {
