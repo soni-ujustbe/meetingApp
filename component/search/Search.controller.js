@@ -5,7 +5,6 @@ import Search from "./Search";
 import {
   fetchPrtner,
   buzData,
-  selectGroupInvitation,
   selectPartners,
   unselectallPartner,
   unselectPartner,

@@ -214,7 +214,7 @@ function Search(props) {
                         )}
                       </div> */}
                       <div className={styles.actionbtn}>
-                        {props.data.groupinvitee == "true" ? (
+                        {/* {props.data.groupinvitee == "true" ? (
                           <>
                             {props.data.selectedpartner.indexOf(item.userId) !==
                               -1 ? (
@@ -256,7 +256,19 @@ function Search(props) {
                           >
                             Send Invitation
                           </button>
-                        )}
+                        )} */}
+                        <button
+                            //onClick={() => props.onaddToInvitationBox(item)}
+                            onClick={() => {
+                              props.onaddToInvitationBox(item);
+                              props.sendmeeting({
+                                userId: item.userId,
+                                status: "null",
+                              });
+                            }}
+                          >
+                            Send Invitation
+                          </button>
                       </div>
                     </div>
                   </li>

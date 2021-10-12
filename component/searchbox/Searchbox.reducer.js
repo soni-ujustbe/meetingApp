@@ -33,7 +33,7 @@ const searchboxReducer = (state = searchinitialState, action) => {
     case CLOSE_SEARCH_BOX:
       return { ...state, showbox: false };
     case SEARCH_BOX_GROUP_INVITEE_TYPE:
-      return { ...state, groupinvitee: true };
+      return { ...state, groupinvitee: false };
     case SEARCH_BOX_SINGLE_INVITEE_TYPE:
       return { ...state, groupinvitee: false, partner: "" };
     case SEARCH_BOX_MAKE_UNIQE_ID:

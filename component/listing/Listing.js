@@ -149,6 +149,7 @@ function Listing(props) {
             onClick={() => {
               //removedClass(item._id);
               props.searchresult(value);
+              
               router.push('/search?search='+value)
             }}
           >
