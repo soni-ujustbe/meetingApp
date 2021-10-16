@@ -68,7 +68,7 @@ function Dashboard(props) {
       token: "ky23eiqgw5",
     };
     axios
-      .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata)
+      .put("https://api.ujustbe.com/UpdateStatus", meetingdata)
       //.then((response) => console.log(response))
       .then(
         (res) => {
@@ -102,7 +102,7 @@ function Dashboard(props) {
       token: "ky23eiqgw5",
     };
     axios
-      .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata)
+      .put("https://api.ujustbe.com/UpdateStatus", meetingdata)
       .then(
         (res) => {
           console.log(res.data.message[0].type)
@@ -124,7 +124,7 @@ function Dashboard(props) {
       <div className="dashboarTop">
         <div className="left">
           <div className="profilePic">
-            <img src={"https://api-test.ujustbe.com/" + props.data.userdata.imgUrl} />
+            <img src={"https://api.ujustbe.com/" + props.data.userdata.imgUrl} />
           </div>
           <h1>{props.data.userdata.firstName} {props.data.userdata.lastName}</h1>
         </div>
@@ -135,7 +135,7 @@ function Dashboard(props) {
       <>
 
         <div className={styles.CardWrapper}>
-          <h2>Invitation Receive</h2>
+          <h2>Invitation Received</h2>
           <ul>
             {props.data.receivedata.length > 0 && props.data.receivedata ? (
               props.data.receivedata.slice(0, 2).map((item, i) => (

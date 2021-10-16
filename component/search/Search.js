@@ -162,7 +162,7 @@ function Search(props) {
                       {item.logo.logoImageURL ?
                         <img
                           src={
-                            "https://api-test.ujustbe.com/" +
+                            "https://api.ujustbe.com/" +
                             item.logo.logoImageURL
                           }
                         /> : <p>NO img</p>
