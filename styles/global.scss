@@ -85,6 +85,10 @@ body {
     position: relative;
     border-bottom: 1px solid #ccc;
     outline: 0px;
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: red;
+      opacity: 1; /* Firefox */
+    }
     &.error {
       border-bottom: 1px solid red;
     }

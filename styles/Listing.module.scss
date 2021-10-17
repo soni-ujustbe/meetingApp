@@ -14,7 +14,7 @@ $blue-clr: #003466;
 .invitationType {
   list-style-type: none;
   padding: 0px 15px;
-  margin: 35px 0px;
+  margin: 25px 0px;
   display: flex;
   li {
     list-style-type: none;
@@ -47,6 +47,10 @@ $blue-clr: #003466;
     line-height: 24px;
     font-size: 14px;
     outline: 0px;
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      //color: red;
+      opacity: 0.4; /* Firefox */
+    }
   }
   button{position: absolute; right: 15px; padding: 9px 15px; font-size: 0; color: rgba(255, 255, 255, 0); width: 40px; line-height: 24px; border: 0px; background-image: url("/images/search-icon.png");
     background-repeat: no-repeat; background-position: center; background-color: #FFF; border-radius: 10px;}
@@ -222,10 +226,15 @@ $blue-clr: #003466;
       font-style: italic;
       display: flex;
       align-items: center;
-      font-size: 15px;
+      font-size: 14px;
       color: #333333;
       font-weight: 400;
       margin-bottom: 5px;
+      width: 90%;
+      white-space: nowrap;
+      resize: horizontal;
+      overflow: hidden;
+      text-overflow: ellipsis;
       img {
         margin-right: 10px;
       }

@@ -139,17 +139,17 @@ function Listing(props) {
         ) : null}
 
         <div className={styles.searchBox}>
-          <p>Total Partners : {props.data.totalcount}</p>
+          
           <input
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            placeholder="Name / Location / Category / Keywords"
           />
           <button
             onClick={() => {
               //removedClass(item._id);
               props.searchresult(value);
-              
               router.push('/search?search='+value)
             }}
           >
@@ -185,13 +185,6 @@ function Listing(props) {
 
         <div className={styles.CardWrapper}>
           <ul>
-            {/* {props.data.selectedpartner.find((product) => {
-              return product.userid((item) => {
-                //^^^^^^
-                return console.log("test", item);
-                //return item.userid === 'milk';
-              });
-            })} */}
             {props.data.businesslist.length > 0 ? (
               props.data.businesslist
                 // .filter((item) => {
@@ -237,39 +230,7 @@ function Listing(props) {
                         {/* {item.address.flat_Wing} {item.address.locality}{" "} */}
                         {item.address.location}
                       </h6>
-                      {/* <div className={styles.actionbtn}>
-                        {props.data.groupinvitee == "true" ? (
-                          <>
-                            {props.data.selectedpartner.indexOf(item._id) !== -1 ? (
-                              <button
-                                onClick={() => {
-                                  //removedClass(item._id);
-                                  props.removeselectLp(item._id)
-                                  props.unselectLP(item._id)
-                                }}
-                              >
-                                remove Partner
-                              </button>
-                            ) : (
-                              <button
-                                onClick={() => {
-                                  props.onSelectLP(item);
-                                  props.selectLP(item._id)
-                                  //props.selectLP({"userid":item._id,"status":"null"})
-                                }}
-                              >
-                                Select Partner
-                              </button>
-                            )}
-                          </>
-                        ) : (
-                          <button
-                            onClick={() => props.onaddToInvitationBox(item)}
-                          >
-                            Send Invitation
-                          </button>
-                        )}
-                      </div> */}
+                      
                       <div className={styles.actionbtn}>
                         {props.data.groupinvitee == "true" ? (
                           <>
@@ -322,13 +283,6 @@ function Listing(props) {
               <p>Loading...</p>
             )}
           </ul>
-          {/* <button>{nodata}</button> */}
-          {/* {props.data.totalcount > counter?
-            <button onClick={() => {
-              currentloaded();
-              props.loadmore(counter);
-            }}>Load More {props.data.totalcount - counter}</button>:null
-          } */}
         </div>
 
       </>

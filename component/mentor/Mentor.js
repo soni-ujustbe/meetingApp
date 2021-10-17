@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Listing.module.scss";
 import Selectmentorinviteecontroller from "../selectmentorinvite/Selectmentorinvitee.controller";
@@ -12,7 +13,7 @@ function Mentor(props) {
   const [message, setMessage] = useState("not at bottom");
   const [height, setheight] = useState(window.innerHeight);
   const [gender, setGender] = useState("false");
-  //const router = useRouter()
+  const router = useRouter()
 
   function emptystate() {
     setnoitem([]);
@@ -123,11 +124,24 @@ function Mentor(props) {
         {
           props.data.partner === null || props.data.partner === "" ? null : <div className={styles.searchBox}>
             {
-              props.data.partner.length > 1 ? <input
-                type="text"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              /> : null
+              props.data.partner.length > 1 ? <>
+                <input
+                  type="text"
+                  value={value}
+                  placeholder="Name / Location / Category / Keywords"
+                  onChange={(e) => setValue(e.target.value)}
+                />
+                <button
+                  onClick={() => {
+                    //removedClass(item._id);
+                    props.searchresult(value);
+                    router.push('/search?search=' + value)
+                  }}
+                >
+                  Search
+                </button>
+              </>
+                : null
             }
             {/* auto complete */}
             {/* <div className={styles.autocompleteBox}>
