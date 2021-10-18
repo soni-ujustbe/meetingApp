@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRouter, withRouter } from "next/router";
+import InvitationboxController from "../component/invitationbox/Invitationbox.controller";
 import Header from "../component/layout/header/Header";
+import ListingController from "../component/listing/Listing.controller";
+import MentorController from "../component/mentor/Mentor.controller";
+import Mentorboxcontroller  from "../component/mentorbox/Mentorbox.controller";
 import Link from "next/link";
-import SearchController from "../component/search/Search.controller";
-//import  Searchboxcontroller  from "../component/searchbox/Searchbox.controller";
-import SearchboxController from "../component/searchbox/Searchbox.controller";
 
 export default function partner() {
   const router = useRouter();
@@ -35,18 +36,19 @@ export default function partner() {
   return (
     <>
     {pageload?<>
-      <section className="topNav invitationsDetails">
+      <section className="topNav">
         <ul>
-        <li className="backbtn"><Link href={"/partner"}>
-            <a><img src="images/back.png" /></a></Link></li>
-          <li>
-            <Link href="/partner"><a>Search Result</a></Link>
+          <li className="active">
+            <Link href="/partner"><a>listed Partner</a></Link>
+          </li>
+          <li >
+          <Link href="/mentor"><a>My Connects</a></Link>
           </li>
         </ul>
       </section>
       {/* <ListingController /> */}
-      <SearchController /> 
-      <SearchboxController/>
+      <ListingController /> <InvitationboxController/>
+
       <Header />
     </>:null}
     </>

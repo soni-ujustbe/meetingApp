@@ -173,7 +173,7 @@ function Invetationreceive(props) {
                     <>
                       {props.data.userid.indexOf(frmlist.userId) !== -1 && frmlist.status !== "null" ?
                         // <div className={styles.statusBox}>
-                        <div className={frmlist.status === "Accept" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}`}>
+                        <div className={frmlist.status === "Accepted" ? `${styles.statusBox} ${styles.accept}` : `${styles.statusBox}` && frmlist.status === "Rejected" ? `${styles.statusBox} ${styles.reject}` : `${styles.statusBox}`}>
                           <h5>You have  </h5>
                           <div className={styles.statusRow}>
                             <h6>Status : </h6> {frmlist.status == "null" || frmlist.status == null ? <h2>Awaiting</h2> : <h2>{frmlist.status}</h2>}

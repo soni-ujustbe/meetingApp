@@ -187,13 +187,13 @@ function Header(props) {
           <li
             onClick={() => meeting()}
             className={
-              router.pathname == "/partner" || metingopen ? "active" : null
+              router.pathname == "/sendinvitation" || metingopen ? "active" : null
             }
           >
             {/* <Link href="/partner?data=U2FsdGVkX1932NCzAPJuRZGCWguA4vKSp1sn5CIhv2AnT/27XyGH+sNvD6P97kFiiARAVa4rZ3o1NL62E+QlWhK7W89eze6iFSbkirRtq50kojB/9jBs0yjg2wtbpW1RbiaSN4UKvF0CP8MyFc9sfhgCKvJeNFoSPlQtIgIygs/WEXw+Zew+YOLu9PkIoTRf"> */}
-            <Link href="/partner">
+            <Link href="/sendinvitation">
               <a>
-                {router.pathname == "/partner" || metingopen ? (
+                {router.pathname == "/sendinvitation" || metingopen ? (
                   <img src="/images/calendar-active.svg" />
                 ) : (
                   <img src="/images/calendar.svg" />
@@ -214,18 +214,18 @@ function Header(props) {
         <ul>
         <li>
             <Link href="/dashboard">
-              <a>Dashboard</a>
+              <a className={router.pathname == "/dashboard" ? "active" : null}>Dashboard</a>
             </Link>
           </li>
           <li>
-            <Link href="/partner">
-              <a>Send Invitation</a>
+            <Link href="/sendinvitation">
+              <a className={router.pathname == "/sendinvitation" ? "active" : null} >Send Invitation</a>
             </Link>
           </li>
           
           <li>
             <Link href="/invitations">
-              <a>Invitation History</a>
+              <a className={router.pathname == "/invitations" ? "active" : null}>Invitation History</a>
             </Link>
           </li>
           <li onClick={() => logout2()}>

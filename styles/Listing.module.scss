@@ -14,8 +14,11 @@ $blue-clr: #003466;
 .invitationType {
   list-style-type: none;
   padding: 0px 15px;
-  margin: 25px 0px;
+  margin: 25px auto;
   display: flex;
+  width: 100%;
+    max-width: 900px;
+    //justify-content: space-around;
   li {
     list-style-type: none;
     margin-right: 25px;
@@ -32,8 +35,11 @@ $blue-clr: #003466;
 
 .searchBox {
   padding: 0 15px;
+  margin: 0 auto;
   margin-bottom: 20px;
   position: relative;
+  //margin: initial auto;
+  max-width: 900px;
   input {
     @extend.shadow2;
     //background-image: url("/images/search-icon.png");
@@ -83,6 +89,10 @@ $blue-clr: #003466;
 .CardWrapper {
   padding: 0 15px;
   padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   ul {
     list-style-type: none;
     display: flex;
@@ -91,6 +101,10 @@ $blue-clr: #003466;
     padding: 0px;
     margin: 0px;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 900px;
+    justify-content: space-around;
+    
     li {
       list-style-type: none;
       margin: 15px 0px;
@@ -202,6 +216,11 @@ $blue-clr: #003466;
         font-size: 20px;
       }
     }
+    h5{
+      margin: 0px;
+      margin-top: 10px;
+      padding: 0px;
+    }
     h4 {
       margin: 0px;
       padding: 0px;
@@ -312,6 +331,7 @@ $blue-clr: #003466;
         display: flex;
         justify-content: flex-start;
         align-content: center;
+        align-self: flex-start;
         h2{margin-left: 15px; font-size: 16px;}
       }
     }
