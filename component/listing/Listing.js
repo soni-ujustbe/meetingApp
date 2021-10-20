@@ -212,7 +212,7 @@ function Listing(props) {
                       {item.logo.logoImageURL ?
                         <img
                           src={
-                            "https://api.ujustbe.com/" +
+                            "https://api-test.ujustbe.com/" +
                             item.logo.logoImageURL
                           }
                         /> : <p>NO img</p>

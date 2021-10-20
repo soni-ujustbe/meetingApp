@@ -9,8 +9,8 @@ class MyDocument extends Document {
   
 
   render() {
-    const APP_NAME = 'next-pwa example'
-    const APP_DESCRIPTION = 'This is an example of using next-pwa plugin'
+    const APP_NAME = 'UMeet App'
+    const APP_DESCRIPTION = 'Enhance Your Connects'
     return (
         <Html lang='en' dir='ltr'>
         <Head>
@@ -22,12 +22,14 @@ class MyDocument extends Document {
           <meta name='format-detection' content='telephone=no' />
           <meta name='mobile-web-app-capable' content='yes' />
           <meta name='theme-color' content='#FFFFFF' />
+          <title>U-Meet App</title>
           {/* TIP: set viewport head meta tag in _app.js, otherwise it will show a warning */}
           {/* <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' /> */}
           
           <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon.png' />
           <link rel='manifest' href='/manifest.json' />
-          <link rel='shortcut icon' href='/favicon.ico' />
+          <link rel="shortcut icon" href="/logo-circle.png"/>
+          {/* <link rel='shortcut icon' href='/favicon.ico' /> */}
           <style>{
             `
             html, body, #__next {

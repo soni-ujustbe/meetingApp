@@ -132,6 +132,9 @@ $blue-clr: #003466;
 
     .profileimage {
       width: 70px;
+      height: 70px;
+      overflow: hidden;
+      border-radius: 50%;
       img {
         width: 100%;
       }

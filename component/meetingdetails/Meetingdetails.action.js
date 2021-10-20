@@ -10,8 +10,8 @@ export const getfetchinvitationdetails = (meetingid) => {
     // console.log("local storage", MessageList.data._id);
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
-      fetch(`https://api.ujustbe.com/Meeting/details?meetingId=${meetingid}`)
-      //fetch("https://api.ujustbe.com/Meeting/details")
+      fetch(`https://api-test.ujustbe.com/Meeting/details?meetingId=${meetingid}`)
+      //fetch("https://api-test.ujustbe.com/Meeting/details")
         //.then(handleErrors)
         .then(
           (res) => res.json(),

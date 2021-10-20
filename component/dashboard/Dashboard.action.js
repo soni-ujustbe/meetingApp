@@ -25,11 +25,11 @@ export const getUserData = () => {
     //console.log("this userId", article);
     const headers = {
       "Content-Type": "application/json",
-      //token: "ky23eiqgw5",
-      token: "gxvy5ig98w",
+      token: "ky23eiqgw5",
+      //token: "gxvy5ig98w",
     };
     axios
-      .post("https://api.ujustbe.com/ValidateToken", article, {
+      .post("https://api-test.ujustbe.com/ValidateToken", article, {
         headers: headers,
       })
       .then((response) => {
@@ -53,8 +53,8 @@ export const receiveinvitation = () => {
     dispatch(fetchuserid(MessageList.data._id));
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
-      fetch("https://api.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
-      //fetch("https://api.ujustbe.com/Meeting/details")
+      fetch("https://api-test.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
+      //fetch("https://api-test.ujustbe.com/Meeting/details")
         //.then(handleErrors)
         .then(
           (res) => res.json(),
@@ -79,7 +79,7 @@ export const sentinvitation = () => {
     dispatch(fetchuserid(MessageList.data._id));
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
-      fetch("https://api.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
+      fetch("https://api-test.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
         //.then(handleErrors)
         .then(
           (res) => res.json()

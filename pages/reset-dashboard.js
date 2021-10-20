@@ -22,7 +22,7 @@ function dashboard() {
       'token': 'ky23eiqgw5'
     }
     axios
-      .post("https://api.ujustbe.com/ValidateToken", article,{
+      .post("https://api-test.ujustbe.com/ValidateToken", article,{
         headers: headers,
       })
       .then((response) => console.log("User data rsponse",response));

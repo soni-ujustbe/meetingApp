@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
 //     dispatch(fetdataRequest());
 //     // return fetch("https://jsonplaceholder.typicode.com/users")
 //     return (
-//       fetch("https://api.ujustbe.com/get-partners/0/0")
+//       fetch("https://api-test.ujustbe.com/get-partners/0/0")
 //         //.then(handleErrors)
 //         .then(
 //           (res) => res.json()
@@ -63,8 +63,8 @@ export const buzData = (count, ccount ) => {
       "Content-Type": "application/json",
     };
     axios
-      //.post("https://api.ujustbe.com/search-dashboard/business", params, {
-      .post("https://api.ujustbe.com/search-dashboard/business", params, {
+      //.post("https://api-test.ujustbe.com/search-dashboard/business", params, {
+      .post("https://api-test.ujustbe.com/search-dashboard/business", params, {
         headers: headers,
       })
       .then((response) => {
@@ -93,7 +93,7 @@ export const fetchPrtner = () => {
     dispatch(fetdataRequest());
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
-      fetch("https://api.ujustbe.com/get-partners/0/0")
+      fetch("https://api-test.ujustbe.com/get-partners/0/0")
         //.then(handleErrors)
         .then(
           (res) => res.json()

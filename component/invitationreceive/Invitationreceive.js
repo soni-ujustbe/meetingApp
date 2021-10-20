@@ -55,7 +55,7 @@ function Invetationreceive(props) {
       token: "ky23eiqgw5",
     };
     axios
-      .put("https://api.ujustbe.com/UpdateStatus", meetingdata)
+      .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata)
       .then(
         (res) => {
           console.log(res.data.message[0].type)
@@ -94,7 +94,7 @@ function Invetationreceive(props) {
       token: "ky23eiqgw5",
     };
     axios
-      .put("https://api.ujustbe.com/UpdateStatus", meetingdata)
+      .put("https://api-test.ujustbe.com/UpdateStatus", meetingdata)
       .then(
         (res) => {
           console.log(res.data.message[0].type)

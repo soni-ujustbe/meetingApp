@@ -65,7 +65,7 @@ function Searchbox(props) {
     };
     console.log("meeting data", meetingdata);
     axios
-      .post("https://api.ujustbe.com/AddNewMeeting", meetingdata)
+      .post("https://api-test.ujustbe.com/AddNewMeeting", meetingdata)
       .then((response) => {
         if (response.data.message[0].type === "SUCCESS") {
           setStatustype(false);
@@ -106,7 +106,7 @@ function Searchbox(props) {
                         {parterdata.imageURL ? (
                           <img
                             src={
-                              "https://api.ujustbe.com/" +
+                              "https://api-test.ujustbe.com/" +
                               parterdata.imageURL
                             }
                           />

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = " https://api.ujustbe.com/";
+const API_URL = " https://api-test.ujustbe.com/";
 import { useRouter } from "next/router";
 
 

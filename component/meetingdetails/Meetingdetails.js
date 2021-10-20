@@ -58,12 +58,12 @@ function Meetingdetails(props,  query ) {
     }
     console.log("mom details data", meetingdata);
     axios
-      .put("https://api.ujustbe.com/UpdateMeeting", meetingdata)
+      .put("https://api-test.ujustbe.com/UpdateMeeting", meetingdata)
       .then((response) => {
         console.log(response);
         if (response.data.message[0].type === "SUCCESS") {
           //setStatustype(false);
-          fetch(`https://api.ujustbe.com/Meeting/details?meetingId=${router.query.name}`)
+          fetch(`https://api-test.ujustbe.com/Meeting/details?meetingId=${router.query.name}`)
             .then(
               (res) => res.json(),
             )
@@ -83,8 +83,8 @@ function Meetingdetails(props,  query ) {
 
   useEffect(() => {
     console.log("check param",router.query );
-    fetch(`https://api.ujustbe.com/Meeting/details?meetingId=${router.query.name}`)
-      //fetch("https://api.ujustbe.com/Meeting/details")
+    fetch(`https://api-test.ujustbe.com/Meeting/details?meetingId=${router.query.name}`)
+      //fetch("https://api-test.ujustbe.com/Meeting/details")
       //.then(handleErrors)
       .then(
         (res) => res.json(),

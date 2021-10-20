@@ -9,7 +9,7 @@ export const fetchMentor = () => {
     // return fetch("https://jsonplaceholder.typicode.com/users")
 
     return (
-      fetch("https://api.ujustbe.com/GetConnectors?UserId=" + MessageList.data._id)
+      fetch("https://api-test.ujustbe.com/GetConnectors?UserId=" + MessageList.data._id)
         //.then(handleErrors)
         .then(
           (res) => res.json(),
