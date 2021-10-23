@@ -37,7 +37,7 @@ export default function partner() {
     {pageload?<>
       <section className="topNav invitationsDetails">
         <ul>
-        <li className="backbtn"><Link href={"/partner"}>
+        <li className="backbtn"><Link href={"/sendinvitation"}>
             <a><img src="images/back.png" /></a></Link></li>
           <li>
             <Link href="/partner"><a>Search Result</a></Link>

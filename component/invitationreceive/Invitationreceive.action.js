@@ -13,8 +13,8 @@ export const fetchinvitationreceive = () => {
     dispatch(fetchuserid(MessageList.data._id));
     // return fetch("https://jsonplaceholder.typicode.com/users")
     return (
-      fetch("https://api-test.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
-      //fetch("https://api-test.ujustbe.com/Meeting/details")
+      fetch("https://api.ujustbe.com/meeting/details-by-userid?userid="+ MessageList.data._id)
+      //fetch("https://api.ujustbe.com/Meeting/details")
         //.then(handleErrors)
         .then(
           (res) => res.json(),

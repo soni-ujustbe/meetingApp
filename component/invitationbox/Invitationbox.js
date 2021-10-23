@@ -66,7 +66,7 @@ function Invitationbox(props) {
     };
     console.log("meeting data", meetingdata);
       axios
-        .post("https://api-test.ujustbe.com/AddNewMeeting", meetingdata)
+        .post("https://api.ujustbe.com/AddNewMeeting", meetingdata)
         .then((response) => {
           if (response.data.message[0].type === "SUCCESS") {
             setStatustype(false);
@@ -111,7 +111,7 @@ function Invitationbox(props) {
                             {parterdata.logo.logoImageURL ? (
                               <img
                                 src={
-                                  "https://api-test.ujustbe.com/" +
+                                  "https://api.ujustbe.com/" +
                                   parterdata.logo.logoImageURL
                                 }
                               />
