@@ -32,7 +32,7 @@ import { useRouter } from 'next/router'
 //     dispatch(fetdataRequest());
 //     // return fetch("https://jsonplaceholder.typicode.com/users")
 //     return (
-//       fetch("https://api-test.ujustbe.com/get-partners/0/0")
+//       fetch("https://api.ujustbe.com/get-partners/0/0")
 //         //.then(handleErrors)
 //         .then(
 //           (res) => res.json()
@@ -74,8 +74,8 @@ export const searchData = (textsearch ) => {
       "Content-Type": "application/json",
     };
     axios
-      //.post("https://api-test.ujustbe.com/search-dashboard/business", params, {
-      .post("https://api-test.ujustbe.com/search-dashboard/business", params, {
+      //.post("https://api.ujustbe.com/search-dashboard/business", params, {
+      .post("https://api.ujustbe.com/search-dashboard/business", params, {
         headers: headers,
       })
       .then((response) => {
@@ -111,7 +111,7 @@ export const searchData = (textsearch ) => {
 //     dispatch(fetdataRequest());
 //     // return fetch("https://jsonplaceholder.typicode.com/users")
 //     return (
-//       fetch("https://api-test.ujustbe.com/get-partners/0/0")
+//       fetch("https://api.ujustbe.com/get-partners/0/0")
 //         //.then(handleErrors)
 //         .then(
 //           (res) => res.json()

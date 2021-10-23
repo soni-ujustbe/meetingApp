@@ -44,7 +44,7 @@ function Searchbox(props) {
     savedata();
   }, []);
 
-  console.log("invitation 3", props);
+  console.log("Seach box content", props);
   useEffect(() => {
     setmeetingId(props.uniqueId);
     setmeetingDate(dateTime.toLocaleDateString());
@@ -65,7 +65,7 @@ function Searchbox(props) {
     };
     console.log("meeting data", meetingdata);
     axios
-      .post("https://api-test.ujustbe.com/AddNewMeeting", meetingdata)
+      .post("https://api.ujustbe.com/AddNewMeeting", meetingdata)
       .then((response) => {
         if (response.data.message[0].type === "SUCCESS") {
           setStatustype(false);
@@ -103,11 +103,11 @@ function Searchbox(props) {
                   <div className={styles.CardWrapper}>
                     <div className={styles.listingCard}>
                       <div className={styles.profileimage}>
-                        {parterdata.imageURL ? (
+                        {parterdata.logo ? (
                           <img
                             src={
-                              "https://api-test.ujustbe.com/" +
-                              parterdata.imageURL
+                              "https://api.ujustbe.com/" +
+                              parterdata.logo.logoImageURL
                             }
                           />
                         ) : (
@@ -122,7 +122,7 @@ function Searchbox(props) {
                           ))}
                         </div> */}
                         <h2>
-                          <h2>{parterdata.firstName} {parterdata.lastName}</h2>
+                          <h2>{parterdata.businessName}</h2>
                         </h2>
                         <h6>
                           <img src="/images/add-icon.png" />

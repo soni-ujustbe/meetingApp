@@ -39,10 +39,10 @@ export default function partner() {
       <section className="topNav">
         <ul>
           <li className="active">
-            <Link href="/partner"><a>listed Partner</a></Link>
+            <Link href="/sendinvitation"><a>listed Partner</a></Link>
           </li>
           <li >
-          <Link href="/mentor"><a>My Connects</a></Link>
+          <Link href="/connect"><a>My Connects</a></Link>
           </li>
         </ul>
       </section>
